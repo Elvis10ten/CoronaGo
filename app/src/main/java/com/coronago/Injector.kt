@@ -10,7 +10,7 @@ object Injector {
 
     private val gson by lazy { Gson() }
 
-    private val userStore by lazy { UserStore(appContext, gson) }
+    private val userStore by lazy { UserStore(appContext) }
 
     fun init(context: Context) {
         appContext = context

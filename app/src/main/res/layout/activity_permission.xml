@@ -22,7 +22,7 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/il_onboarding"
+        android:src="@drawable/il_location"
         android:contentDescription="@null"
         />
 
@@ -38,7 +38,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:fontFamily="@string/fontFamilyMedium"
         android:gravity="center_horizontal"
-        android:text="@string/onboardingTitle"
+        android:text="@string/permissionTitle"
         />
 
     <TextView
@@ -48,7 +48,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:gravity="center_horizontal"
         android:alpha="?alphaEmphasisHigh"
-        android:text="@string/onboardingSubtitle"
+        android:text="@string/permissionSubtitle"
         />
 
     <Space
@@ -58,20 +58,10 @@
         />
 
     <Button
-        android:id="@+id/getStartedButton"
+        android:id="@+id/requestPermissionButton"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fatButtonHeight"
-        android:text="@string/onboardingActionGetStarted"
+        android:text="@string/permissionActionEnable"
         style="@style/Widget.AppCompat.Button.Colored"
-        />
-
-    <TextView
-        android:id="@+id/whySocialDistancingTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:gravity="center_horizontal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:text="@string/onboardingWhySocialDistancingWorks"
         />
 </LinearLayout>

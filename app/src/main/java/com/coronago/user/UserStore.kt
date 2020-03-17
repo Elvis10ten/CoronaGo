@@ -1,49 +1,37 @@
 package com.coronago.user
 
 import android.content.Context
+import com.coronago.utils.hasLocationPermission
 import com.google.gson.Gson
 
-private const val KEY_HAS_ONBOARDED = "KEY_HAS_ONBOARDED"
-private const val KEY_USER_MODEL = "KEY_USER_MODEL"
+private const val KEY_TIME_ONBOARDED = "KEY_TIME_ONBOARDED"
 
 class UserStore(
-    private val appContext: Context,
-    private val gson: Gson
+    private val appContext: Context
 ) {
 
     private val sp = appContext.getSharedPreferences("USER_STORE", Context.MODE_PRIVATE)
-    private var signedInUserModel: UserModel? = null
 
-    fun checkState(callback: Callback) {
-        if(!sp.getBoolean(KEY_HAS_ONBOARDED, false)) {
+    fun ensurePreConditions(callback: Callback) {
+        if(sp.getLong(KEY_TIME_ONBOARDED, 0) == 0L) {
             callback.onOnboardingRequired()
-        } else if(getUserModel() == null) {
-            callback.onSignInRequired()
+        } else if(!appContext.hasLocationPermission()) {
+            callback.onLocationPermissionRequired()
         } else {
-            callback.onSignedIn()
+            callback.onReady()
         }
     }
 
     fun justOnboarded() {
-        sp.edit().putBoolean(KEY_HAS_ONBOARDED, true).apply()
-    }
-
-    fun justSignedIn(userModel: UserModel) {
-        sp.edit().putString(KEY_USER_MODEL, gson.toJson(userModel)).apply()
-    }
-
-    fun getUserModel(): UserModel? {
-        if(signedInUserModel != null) return signedInUserModel
-        signedInUserModel = gson.fromJson(sp.getString(KEY_USER_MODEL, null), UserModel::class.java)
-        return signedInUserModel
+        sp.edit().putLong(KEY_TIME_ONBOARDED, System.currentTimeMillis()).apply()
     }
 
     interface Callback {
 
         fun onOnboardingRequired()
 
-        fun onSignInRequired()
+        fun onLocationPermissionRequired()
 
-        fun onSignedIn()
+        fun onReady()
     }
 }

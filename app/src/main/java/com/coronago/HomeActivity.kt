@@ -14,7 +14,7 @@ class HomeActivity: AppCompatActivity(), UserStore.Callback {
         super.onCreate(savedInstanceState)
         Injector.inject(this)
         setContentView(R.layout.activity_home)
-        userStore.checkState(this)
+        userStore.ensurePreConditions(this)
     }
 
     override fun onOnboardingRequired() {
@@ -22,12 +22,12 @@ class HomeActivity: AppCompatActivity(), UserStore.Callback {
         finish()
     }
 
-    override fun onSignInRequired() {
-        SignInActivity.start(this)
+    override fun onLocationPermissionRequired() {
+        PermissionActivity.start(this)
         finish()
     }
 
-    override fun onSignedIn() {
+    override fun onReady() {
         // Initialize home
     }
 

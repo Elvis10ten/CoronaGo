@@ -6,4 +6,10 @@
     <string name="onboardingSubtitle">• Earn points by staying home or away from others\n• You save lives by just social distancing\n• You can redeem your points at a local stores.</string>
     <string name="onboardingActionGetStarted">Get Started</string>
     <string name="onboardingWhySocialDistancingWorks"><a href="https://www.washingtonpost.com/graphics/2020/world/corona-simulator/">Click here</a> to learn how social distancing saves lives</string>
+
+    <!-- Permission screen -->
+    <string name="permissionTitle">Enable Location Permission</string>
+    <string name="permissionSubtitle">We use your location to determine your position. Your location data is only processed locally. It will never be shared.</string>
+    <string name="permissionActionEnable">Enable</string>
+    <string name="permissionAlertDenied">Location permission denied!</string>
 </resources>
