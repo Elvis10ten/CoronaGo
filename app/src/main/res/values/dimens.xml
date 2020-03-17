@@ -10,4 +10,6 @@
     <dimen name="profilePhotoSmallSize">36dp</dimen>
     <dimen name="screenVerticalPadding">16dp</dimen>
     <dimen name="screenHorizontalPadding">16dp</dimen>
+
+    <dimen name="fatButtonHeight">64dp</dimen>
 </resources>

@@ -45,7 +45,10 @@ dependencies {
     implementation Dependencies.JAVAX_ANNOTATION
 
     implementation Dependencies.JAKE_TIMBER
+    implementation Dependencies.GSON
 
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation Dependencies.JUNIT
     androidTestImplementation Dependencies.ANDROIDX_EXPRESSO_CORE
 }
