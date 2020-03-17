@@ -3,35 +3,49 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion ModuleConfigs.COMPILE_SDK_VERSION
+    buildToolsVersion ModuleConfigs.BUILD_TOOLS_VERSION
+
+    compileOptions {
+        sourceCompatibility = ModuleConfigs.JAVA_VERSION
+        targetCompatibility = ModuleConfigs.JAVA_VERSION
+    }
 
     defaultConfig {
         applicationId "com.coronago"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion ModuleConfigs.MINIMUM_SDK_VERSION
+        targetSdkVersion ModuleConfigs.TARGET_SDK_VERSION
+
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    lintOptions {
+        checkAllWarnings = true
+        abortOnError = true
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+    implementation Dependencies.ANDROIDX_APPCOMPAT
+    implementation Dependencies.ANDROIDX_KTX
+    implementation Dependencies.ANDROIDX_ANNOTATIONS
+    implementation Dependencies.ANDROID_MATERIAL_COMPONENTS
+    implementation Dependencies.JAVAX_ANNOTATION
+
+    implementation Dependencies.JAKE_TIMBER
+
+    testImplementation Dependencies.JUNIT
+    androidTestImplementation Dependencies.ANDROIDX_EXPRESSO_CORE
 }
