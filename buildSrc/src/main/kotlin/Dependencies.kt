@@ -17,6 +17,7 @@ object Dependencies {
     // Google tools
     const val ANDROID_MATERIAL_COMPONENTS = "com.google.android.material:material:1.2.0-alpha03"
     const val GSON = "com.google.code.gson:gson:2.8.6"
+    const val GMS_LOCATION = "com.google.android.gms:play-services-location:17.0.0"
 
     // Dev
     const val JAKE_TIMBER = "com.jakewharton.timber:timber:4.7.1"

@@ -12,4 +12,7 @@
     <string name="permissionSubtitle">We use your location to determine your position. Your location data is only processed locally. It will never be shared.</string>
     <string name="permissionActionEnable">Enable</string>
     <string name="permissionAlertDenied">Location permission denied!</string>
+
+    <!-- Home screen -->
+    <string name="homeLocationSettingsCheckFailed">Location settings check failed!</string>
 </resources>

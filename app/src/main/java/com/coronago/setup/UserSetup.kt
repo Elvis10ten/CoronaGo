@@ -1,12 +1,15 @@
 package com.coronago.setup
 
 import android.content.Context
+import com.coronago.geospatial.LocationSettingsChecker
 import com.coronago.utils.hasLocationPermission
+import com.google.android.gms.common.api.ResolvableApiException
 
 private const val KEY_TIME_ONBOARDED = "KEY_TIME_ONBOARDED"
 
 class UserSetup(
-    private val appContext: Context
+    private val appContext: Context,
+    private val locationSettingsChecker: LocationSettingsChecker
 ) {
 
     private val sp = appContext.getSharedPreferences("USER_STORE", Context.MODE_PRIVATE)
@@ -17,7 +20,22 @@ class UserSetup(
         } else if(!appContext.hasLocationPermission()) {
             callback.onLocationPermissionRequired()
         } else {
-            callback.onSetupComplete()
+            checkLocationSettings(callback)
+        }
+    }
+
+    private fun checkLocationSettings(callback: Callback) {
+        locationSettingsChecker.check { result ->
+            result.fold(
+                { callback.onSetupComplete() },
+                { exception ->
+                    if(exception is ResolvableApiException) {
+                        callback.onLocationPermissionRequired()
+                    } else {
+                        callback.onLocationSettingsCheckFailed()
+                    }
+                }
+            )
         }
     }
 
@@ -32,6 +50,10 @@ class UserSetup(
         fun onOnboardingRequired()
 
         fun onLocationPermissionRequired()
+
+        fun onLocationSettingsCheckRequired(exception: ResolvableApiException)
+
+        fun onLocationSettingsCheckFailed()
 
         fun onSetupComplete()
     }

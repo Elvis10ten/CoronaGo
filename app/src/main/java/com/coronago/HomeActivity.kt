@@ -4,7 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.coronago.setup.UserSetup
+import com.google.android.gms.common.api.ResolvableApiException
+
+private const val REQUEST_CODE_CHANGE_LOCATION_SETTINGS = 1
 
 class HomeActivity: AppCompatActivity(), UserSetup.Callback {
 
@@ -27,8 +31,25 @@ class HomeActivity: AppCompatActivity(), UserSetup.Callback {
         finish()
     }
 
+    override fun onLocationSettingsCheckRequired(exception: ResolvableApiException) {
+        exception.startResolutionForResult(this, REQUEST_CODE_CHANGE_LOCATION_SETTINGS)
+    }
+
+    override fun onLocationSettingsCheckFailed() {
+        Toast.makeText(this, R.string.homeLocationSettingsCheckFailed, Toast.LENGTH_LONG).show()
+        // TODO: What do we do do do, doo doo, doooo, dooooooo, sing along with me.
+    }
+
     override fun onSetupComplete() {
         // Initialize home
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == REQUEST_CODE_CHANGE_LOCATION_SETTINGS) {
+            userSetup.checkSetup(this)
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
     }
 
     companion object {

@@ -1,6 +1,7 @@
 package com.coronago
 
 import android.content.Context
+import com.coronago.geospatial.LocationSettingsChecker
 import com.coronago.setup.AppInitializer
 import com.coronago.setup.UserSetup
 import com.google.gson.Gson
@@ -13,7 +14,9 @@ object Injector {
 
     private val appInitializer by lazy { AppInitializer(appContext) }
 
-    private val userStore by lazy { UserSetup(appContext) }
+    private val locationSettingsChecker by lazy { LocationSettingsChecker(appContext) }
+
+    private val userStore by lazy { UserSetup(appContext, locationSettingsChecker) }
 
     fun init(context: Context) {
         appContext = context
