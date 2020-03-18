@@ -4,17 +4,17 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.coronago.user.UserStore
+import com.coronago.setup.UserSetup
 
-class HomeActivity: AppCompatActivity(), UserStore.Callback {
+class HomeActivity: AppCompatActivity(), UserSetup.Callback {
 
-    lateinit var userStore: UserStore
+    lateinit var userSetup: UserSetup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Injector.inject(this)
         setContentView(R.layout.activity_home)
-        userStore.ensurePreConditions(this)
+        userSetup.checkSetup(this)
     }
 
     override fun onOnboardingRequired() {
@@ -27,7 +27,7 @@ class HomeActivity: AppCompatActivity(), UserStore.Callback {
         finish()
     }
 
-    override fun onReady() {
+    override fun onSetupComplete() {
         // Initialize home
     }
 

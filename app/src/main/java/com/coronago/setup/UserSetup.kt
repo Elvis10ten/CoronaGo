@@ -1,29 +1,30 @@
-package com.coronago.user
+package com.coronago.setup
 
 import android.content.Context
 import com.coronago.utils.hasLocationPermission
-import com.google.gson.Gson
 
 private const val KEY_TIME_ONBOARDED = "KEY_TIME_ONBOARDED"
 
-class UserStore(
+class UserSetup(
     private val appContext: Context
 ) {
 
     private val sp = appContext.getSharedPreferences("USER_STORE", Context.MODE_PRIVATE)
 
-    fun ensurePreConditions(callback: Callback) {
-        if(sp.getLong(KEY_TIME_ONBOARDED, 0) == 0L) {
+    fun checkSetup(callback: Callback) {
+        if(!sp.contains(KEY_TIME_ONBOARDED)) {
             callback.onOnboardingRequired()
         } else if(!appContext.hasLocationPermission()) {
             callback.onLocationPermissionRequired()
         } else {
-            callback.onReady()
+            callback.onSetupComplete()
         }
     }
 
     fun justOnboarded() {
-        sp.edit().putLong(KEY_TIME_ONBOARDED, System.currentTimeMillis()).apply()
+        sp.edit()
+            .putLong(KEY_TIME_ONBOARDED, System.currentTimeMillis())
+            .apply()
     }
 
     interface Callback {
@@ -32,6 +33,6 @@ class UserStore(
 
         fun onLocationPermissionRequired()
 
-        fun onReady()
+        fun onSetupComplete()
     }
 }

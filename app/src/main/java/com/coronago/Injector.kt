@@ -1,7 +1,8 @@
 package com.coronago
 
 import android.content.Context
-import com.coronago.user.UserStore
+import com.coronago.setup.AppInitializer
+import com.coronago.setup.UserSetup
 import com.google.gson.Gson
 
 object Injector {
@@ -10,17 +11,23 @@ object Injector {
 
     private val gson by lazy { Gson() }
 
-    private val userStore by lazy { UserStore(appContext) }
+    private val appInitializer by lazy { AppInitializer(appContext) }
+
+    private val userStore by lazy { UserSetup(appContext) }
 
     fun init(context: Context) {
         appContext = context
     }
 
+    fun inject(app: CoronaGoApp) {
+        app.appInitializer = appInitializer
+    }
+
     fun inject(homeActivity: HomeActivity) {
-        homeActivity.userStore = userStore
+        homeActivity.userSetup = userStore
     }
 
     fun inject(onboardingActivity: OnboardingActivity) {
-        onboardingActivity.userStore = userStore
+        onboardingActivity.userSetup = userStore
     }
 }

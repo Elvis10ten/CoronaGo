@@ -1,19 +1,16 @@
 package com.coronago
 
 import android.app.Application
-import timber.log.Timber
+import com.coronago.setup.AppInitializer
 
 class CoronaGoApp: Application() {
 
+    lateinit var appInitializer: AppInitializer
+
     override fun onCreate() {
         super.onCreate()
-        initLogs()
         Injector.init(this)
-    }
-
-    private fun initLogs() {
-        if(BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
+        Injector.inject(this)
+        appInitializer.init()
     }
 }
