@@ -2,18 +2,26 @@ package com.coronago
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.coronago.geospatial.MovementManager
 import com.coronago.geospatial.MovementService
+import com.coronago.rewards.RewardsManager
 import com.coronago.setup.UserSetup
+import com.coronago.utils.beGone
+import com.coronago.utils.beVisible
 import com.google.android.gms.common.api.ResolvableApiException
+import kotlinx.android.synthetic.main.activity_home.*
 
 private const val REQUEST_CODE_CHANGE_LOCATION_SETTINGS = 1
 
 class HomeActivity: AppCompatActivity(), UserSetup.Callback {
 
     lateinit var userSetup: UserSetup
+    lateinit var movementManager: MovementManager
+    lateinit var rewardsManager: RewardsManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +50,23 @@ class HomeActivity: AppCompatActivity(), UserSetup.Callback {
     }
 
     override fun onSetupComplete() {
+        loadingBackground.beGone()
+        activeBackground.beVisible()
+        movementManager.start()
         MovementService.startService(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        pointsText.text = rewardsManager.getPoints().toString()
+        rewardsManager.pointsUpdateCallback = { newPoints ->
+            pointsText.text = newPoints.toString()
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        rewardsManager.pointsUpdateCallback = null
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

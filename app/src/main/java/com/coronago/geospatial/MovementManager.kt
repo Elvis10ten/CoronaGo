@@ -54,16 +54,26 @@ class MovementManager(
         }
     }
 
+    // Start/Stop should be idempotent
+
     fun start() {
         Timber.i("Starting your manager")
-        isStarted = true
-        locationClient.requestLocationUpdates(getLocationRequest(), locationCallback, mainLooper)
-        handler.postDelayed(periodRunnable, PERIOD_LENGTH_MILLIS)
+        if(!isStarted) {
+            isStarted = true
+            locationClient.requestLocationUpdates(
+                getLocationRequest(),
+                locationCallback,
+                mainLooper
+            )
+            handler.postDelayed(periodRunnable, PERIOD_LENGTH_MILLIS)
+        }
     }
 
     fun stop() {
         Timber.i("Stopping your manager")
-        cancel()
+        if(isStarted) {
+            cancel()
+        }
     }
 
     private fun cancel() {

@@ -64,6 +64,8 @@ object Injector {
 
     fun inject(homeActivity: HomeActivity) {
         homeActivity.userSetup = userSetup
+        homeActivity.movementManager = movementManager
+        homeActivity.rewardsManager = rewardsManager
     }
 
     fun inject(onboardingActivity: OnboardingActivity) {

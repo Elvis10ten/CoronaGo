@@ -16,6 +16,10 @@
 
     <!-- Home screen -->
     <string name="homeLocationSettingsCheckFailed">Location settings check failed!</string>
+    <string name="homeActionQuiz">Quit</string>
+    <string name="homeLabelPoints">Points</string>
+    <string name="homeTitleActive">Pokemon Stay😻</string>
+    <string name="homeSubtitleActive">It\'s simple, you move too much, you loose 😄</string>
 
     <!-- Movement Service -->
     <string name="primaryNotificationChannelName">Primary</string>

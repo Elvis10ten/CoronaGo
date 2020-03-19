@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.coronago">
     <!-- Thanks to Undraw for all the free illustrations. https://undraw.co/illustrations -->
-
     <!-- Normal permissions -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <!-- Dangerous permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -15,32 +14,26 @@
     <application
         android:name=".CoronaGoApp"
         android:allowBackup="true"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/appName"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:fullBackupContent="false">
-
-        <activity
-            android:name=".PermissionActivity"
-            />
-
-        <activity
-            android:name=".OnboardingActivity"
-            />
-
+        android:theme="@style/AppTheme">
+        <activity android:name=".QuizActivity"></activity>
+        <activity android:name=".PermissionActivity" />
+        <activity android:name=".OnboardingActivity" />
         <activity android:name=".HomeActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <service
             android:name=".geospatial.MovementService"
-            android:foregroundServiceType="location"
-            />
+            android:foregroundServiceType="location" />
     </application>
+
 </manifest>

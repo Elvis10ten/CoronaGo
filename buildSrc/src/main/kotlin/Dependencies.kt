@@ -25,6 +25,8 @@ object Dependencies {
     // Java
     const val JAVAX_ANNOTATION = "javax.annotation:javax.annotation-api:1.2"
 
+    const val SPIN_KIT = "com.github.ybq:Android-SpinKit:1.4.0"
+
     // Tests
     const val JUNIT = "junit:junit:4.12"
     const val ANDROIDX_JUNITX = "androidx.test.ext:junit:1.1.0"
