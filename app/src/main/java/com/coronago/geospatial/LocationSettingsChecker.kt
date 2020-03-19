@@ -4,8 +4,6 @@ import android.content.Context
 import com.coronago.utils.Cancelable
 import com.google.android.gms.location.*
 
-private const val LOCATION_RATE_INTERVALS_MILLIS = 2_000L
-
 class LocationSettingsChecker(
     private val appContext: Context
 ) {
@@ -35,12 +33,5 @@ class LocationSettingsChecker(
         }
 
         return cancelable
-    }
-
-    private fun getLocationRequest(): LocationRequest {
-        return LocationRequest.create().apply {
-            interval = LOCATION_RATE_INTERVALS_MILLIS
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        }
     }
 }
