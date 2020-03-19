@@ -14,7 +14,7 @@ PS: This project was just a hacky project I built based on this tweet: https://t
 ### Home
 ![Home](sc_home.png)
 ### First challenge passed
-![First challenge passed](sc_alert_second_challenge_failed.png)
+![First challenge passed](sc_alert_first_challenge_passed.png)
 ### Quiz
 ![Quiz](sc_quiz.png)
 ### Second challenge passed
@@ -23,4 +23,5 @@ PS: This project was just a hacky project I built based on this tweet: https://t
 ![Second challenge failed](sc_alert_second_challenge_failed.png)
 
 Thanks to UnDraw for the free illustrations: https://undraw.co/illustrations
+
 Thanks to FreeSound for the free sound: http://www.freesound.org/
