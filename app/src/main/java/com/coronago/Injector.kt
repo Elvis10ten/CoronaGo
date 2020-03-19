@@ -2,9 +2,12 @@ package com.coronago
 
 import android.content.Context
 import android.os.Handler
+import android.os.Looper
 import com.coronago.geospatial.LocationSettingsChecker
 import com.coronago.geospatial.LocationStore
 import com.coronago.geospatial.MovementManager
+import com.coronago.geospatial.MovementService
+import com.coronago.rewards.RewardsManager
 import com.coronago.setup.AppInitializer
 import com.coronago.setup.UserSetup
 import com.google.android.gms.location.LocationServices
@@ -17,6 +20,8 @@ object Injector {
     private val handler by lazy { Handler() }
 
     private val gson by lazy { Gson() }
+
+    private val mainLooper by lazy { Looper.getMainLooper() }
 
     private val appInitializer by lazy { AppInitializer(appContext) }
 
@@ -32,8 +37,16 @@ object Injector {
         MovementManager(
             appContext,
             handler,
+            mainLooper,
             LocationServices.getFusedLocationProviderClient(appContext),
-            locationStore
+            locationStore,
+            rewardsManager
+        )
+    }
+
+    val rewardsManager by lazy {
+        RewardsManager(
+            appContext
         )
     }
 
@@ -51,5 +64,9 @@ object Injector {
 
     fun inject(onboardingActivity: OnboardingActivity) {
         onboardingActivity.userSetup = userSetup
+    }
+
+    fun inject(movementService: MovementService) {
+
     }
 }
