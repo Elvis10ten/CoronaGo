@@ -2,6 +2,7 @@ package com.coronago.setup
 
 import android.content.Context
 import com.coronago.BuildConfig
+import com.coronago.utils.NotificationChannelUtils
 import timber.log.Timber
 
 class AppInitializer(
@@ -10,6 +11,7 @@ class AppInitializer(
 
     fun init() {
         initLogs()
+        NotificationChannelUtils.setupChannels(appContext)
     }
 
     private fun initLogs() {

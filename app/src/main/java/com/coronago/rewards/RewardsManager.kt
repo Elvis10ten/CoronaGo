@@ -2,6 +2,7 @@ package com.coronago.rewards
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.coronago.geospatial.MovementService
 
 private const val KEY_POINTS = "KEY_POINTS"
 private const val TOP_UP_POINTS_AMOUNT = 10
@@ -12,12 +13,14 @@ class RewardsManager(
     private val sp: SharedPreferences
 ) {
 
-    fun onFirstChallengeCompleted() {
+    var pointsUpdateCallback: ((Int) -> Unit)? = null
 
+    fun onFirstChallengeCompleted() {
+        MovementService.alertFirstChallengePassed(appContext)
     }
 
     fun onFirstChallengeFailed() {
-
+        MovementService.alertFirstChallengeFailure(appContext)
     }
 
     fun onSecondChallengeCompleted() {
@@ -33,6 +36,7 @@ class RewardsManager(
         sp.edit()
             .putInt(KEY_POINTS, currentPoint + TOP_UP_POINTS_AMOUNT)
             .apply()
+        pointsUpdateCallback?.invoke(getPoints())
     }
 
     fun getPoints(): Int {

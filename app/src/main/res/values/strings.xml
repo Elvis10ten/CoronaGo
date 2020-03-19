@@ -15,4 +15,11 @@
 
     <!-- Home screen -->
     <string name="homeLocationSettingsCheckFailed">Location settings check failed!</string>
+
+    <!-- Movement Service -->
+    <string name="primaryNotificationChannelName">Primary</string>
+    <string name="primaryNotificationChannelDesc">Receive alerts about challenges or points gained.</string>
+    <string name="defaultNotificationText">Tracking locally…</string>
+    <string name="alertFirstChallengePassed">Congrats! You passed the first challenge. Click to complete the second challenge and gain points.</string>
+    <string name="alertFirstChallengeFailed">Dang! You moved too much. Reduce your movement to pass the first challenge.</string>
 </resources>

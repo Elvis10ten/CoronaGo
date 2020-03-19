@@ -2,12 +2,15 @@ package com.coronago.utils
 
 import android.Manifest.permission.*
 import android.app.Activity
+import android.app.NotificationManager
 import android.content.Context
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 const val REQUEST_CODE_REQUEST_LOCATION_PERMISSION = 1
+
+fun Context.getNotificationManager() = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
 fun Context.hasLocationPermission(): Boolean {
     return if(AndroidVersion.isAtLeastTen()) {

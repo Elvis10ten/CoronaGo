@@ -7,6 +7,7 @@ import com.coronago.geospatial.LocationSettingsChecker
 import com.coronago.geospatial.LocationStore
 import com.coronago.geospatial.MovementManager
 import com.coronago.geospatial.MovementService
+import com.coronago.quiz.QuizProvider
 import com.coronago.rewards.RewardsManager
 import com.coronago.setup.AppInitializer
 import com.coronago.setup.UserSetup
@@ -33,6 +34,8 @@ object Injector {
 
     private val locationStore by lazy { LocationStore(sharedPreferences) }
 
+    private val quizProvider by lazy { QuizProvider(sharedPreferences) }
+
     val movementManager by lazy {
         MovementManager(
             appContext,
@@ -46,7 +49,8 @@ object Injector {
 
     val rewardsManager by lazy {
         RewardsManager(
-            appContext
+            appContext,
+            sharedPreferences
         )
     }
 

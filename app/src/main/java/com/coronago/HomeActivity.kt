@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.coronago.geospatial.MovementService
 import com.coronago.setup.UserSetup
 import com.google.android.gms.common.api.ResolvableApiException
 
@@ -41,7 +42,7 @@ class HomeActivity: AppCompatActivity(), UserSetup.Callback {
     }
 
     override fun onSetupComplete() {
-
+        MovementService.startService(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -58,6 +59,10 @@ class HomeActivity: AppCompatActivity(), UserSetup.Callback {
             Intent(context, HomeActivity::class.java).apply {
                 context.startActivity(this)
             }
+        }
+
+        fun getIntent(context: Context): Intent {
+            return Intent(context, HomeActivity::class.java)
         }
     }
 }
