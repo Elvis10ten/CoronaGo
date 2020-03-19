@@ -14,6 +14,7 @@ import com.coronago.utils.beGone
 import com.coronago.utils.beVisible
 import com.google.android.gms.common.api.ResolvableApiException
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlin.system.exitProcess
 
 private const val REQUEST_CODE_CHANGE_LOCATION_SETTINGS = 1
 
@@ -54,6 +55,11 @@ class HomeActivity: AppCompatActivity(), UserSetup.Callback {
         activeBackground.beVisible()
         movementManager.start()
         MovementService.startService(this)
+
+        quitButton.setOnClickListener {
+            MovementService.stopService(this)
+            exitProcess(0)
+        }
     }
 
     override fun onStart() {

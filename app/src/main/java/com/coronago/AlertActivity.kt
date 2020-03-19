@@ -1,6 +1,5 @@
 package com.coronago
 
-import android.R
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
@@ -39,7 +38,7 @@ class AlertActivity : AppCompatActivity() {
 
         alertImage.setImageResource(alert.imageId)
         alertTitle.setText(alert.titleId)
-        alertSubtitle.setText(alert.titleId)
+        alertSubtitle.setText(alert.subtitleId)
 
         alertButton.setText(alert.buttonTextId)
         alertButton.setOnClickListener {

@@ -11,7 +11,7 @@
     android:paddingEnd="32dp"
     android:paddingTop="32dp"
     android:paddingBottom="16dp"
-    tools:context=".HomeActivity">
+    tools:context=".OnboardingActivity">
 
     <Space
         android:layout_width="0dp"
@@ -62,7 +62,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/fatButtonHeight"
         android:text="@string/onboardingActionGetStarted"
-        style="@style/Widget.AppCompat.Button.Colored"
         />
 
     <TextView

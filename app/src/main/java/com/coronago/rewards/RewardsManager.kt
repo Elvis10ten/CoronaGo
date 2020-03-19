@@ -8,7 +8,7 @@ private const val KEY_POINTS = "KEY_POINTS"
 private const val TOP_UP_POINTS_AMOUNT = 10
 private const val DEDUCT_POINTS_AMOUNT = 5
 
-// Here, another manager
+// Hey look, another another manager
 class RewardsManager(
     private val appContext: Context,
     private val sp: SharedPreferences
@@ -26,11 +26,13 @@ class RewardsManager(
     fun onFirstChallengePassed() {
         firstChallengeStatus = ChallengeStatus.PASSED
         MovementService.notifyFirstChallengePassed(appContext)
+        notifyFirstChallengeCallback()
     }
 
     fun onFirstChallengeFailed() {
         firstChallengeStatus = ChallengeStatus.FAILURE
         MovementService.notifyFirstChallengeFailure(appContext)
+        notifyFirstChallengeCallback()
     }
 
     private fun notifyFirstChallengeCallback() {

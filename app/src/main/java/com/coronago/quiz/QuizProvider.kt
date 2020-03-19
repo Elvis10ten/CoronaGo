@@ -8,8 +8,17 @@ private val bank = listOf(
         setOf(
             Option("01 March 2020", false),
             Option("14 February 2020", false),
-            Option("31 December 2019", false),
+            Option("31 December 2019", true),
             Option("10 January 2020", false)
+        )
+    ),
+    Quiz(
+        "When is a reasonable estimate for Corona R0",
+        setOf(
+            Option("7.93", false),
+            Option("2.28", true),
+            Option("0.1", false),
+            Option("15.84", false)
         )
     )
 )
@@ -23,6 +32,7 @@ class QuizProvider(
     fun get(): Quiz {
         val quizIndex = getNextQuizIndex()
         val quiz = bank[quizIndex]
+        quiz.options = quiz.options.shuffled().toSet()
         updateLastQuizIndex(quizIndex)
         return quiz
     }

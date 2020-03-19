@@ -11,7 +11,7 @@
     android:paddingEnd="32dp"
     android:paddingTop="32dp"
     android:paddingBottom="16dp"
-    tools:context=".OnboardingActivity">
+    tools:context=".HomeActivity">
 
 
     <FrameLayout

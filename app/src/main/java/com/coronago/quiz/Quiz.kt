@@ -2,7 +2,7 @@ package com.coronago.quiz
 
 data class Quiz(
     val question: String,
-    val options: Set<Option>
+    var options: Set<Option>
 )
 
 data class Option(

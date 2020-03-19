@@ -1,5 +1,8 @@
 <resources>
-    <!-- Thanks to Undraw for all the free illustrations. https://undraw.co/illustrations -->
+
+    <!-- Thanks to UnDraw for all the free illustrations. https://undraw.co/illustrations -->
+    <!-- Thanks to FreeSound for all the free illustrations. http://www.freesound.org/ -->
+
     <string name="appName">CoronaGo</string>
 
     <!-- Onboarding screen -->
@@ -36,4 +39,10 @@
     <string name="alertSubtitleSecondChallengePassed">You gained some points. Keep playing, we will kick Corona\'s ass together.</string>
     <string name="alertTitleSecondChallengeFailed">Awwwww! Incorrect answer 😭😭😭</string>
     <string name="alertSubtitleSecondChallengeFailed">Brush your knowledge about Corona and try again. The better you are informed, the less the spread.</string>
+
+    <!-- Quiz screen -->
+    <string name="quizTitle">Quiz</string>
+    <string name="quizSubtitle">Answer the question correctly to claim your points</string>
+    <string name="quizActionConfirm">Confirm</string>
+    <string name="dummyText">Lorem ipsum pisum lasum disf faf lajf ljfalf lajfl ipsum pisum lasum disf faf lajf ljfalf lajfl ipsum pisum lasum disf faf lajf ljfalf lajfl</string>
 </resources>

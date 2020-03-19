@@ -11,7 +11,7 @@ import timber.log.Timber
 private const val PERIOD_LENGTH_MILLIS = 1_000L * 60 * 30
 private const val MAX_ALLOWED_TOTAL_DISTANCE_METERS = 50.0
 
-// Because it manages
+// Because it manages you know
 class MovementManager(
     private val appContext: Context,
     private val handler: Handler,
@@ -41,6 +41,7 @@ class MovementManager(
     private val periodRunnable = object: Runnable {
 
         override fun run() {
+            Timber.i("Period complete!")
             val totalDistance = trackSink.sumByDouble { it.distance.toDouble() }
             if(totalDistance <= MAX_ALLOWED_TOTAL_DISTANCE_METERS) {
                 rewardsManager.onFirstChallengePassed()
@@ -57,8 +58,8 @@ class MovementManager(
     // Start/Stop should be idempotent
 
     fun start() {
-        Timber.i("Starting your manager")
         if(!isStarted) {
+            Timber.i("Starting your manager")
             isStarted = true
             locationClient.requestLocationUpdates(
                 getLocationRequest(),
