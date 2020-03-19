@@ -43,7 +43,7 @@ class MovementManager(
         override fun run() {
             val totalDistance = trackSink.sumByDouble { it.distance.toDouble() }
             if(totalDistance <= MAX_ALLOWED_TOTAL_DISTANCE_METERS) {
-                rewardsManager.onFirstChallengeCompleted()
+                rewardsManager.onFirstChallengePassed()
             } else {
                 rewardsManager.onFirstChallengeFailed()
             }

@@ -5,9 +5,7 @@
     <!-- Normal permissions -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
-    <!-- Dangerous permissions -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Dangerous permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
@@ -20,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QuizActivity"></activity>
+        <activity android:name=".AlertActivity"></activity>
+        <activity android:name=".QuizActivity" />
         <activity android:name=".PermissionActivity" />
         <activity android:name=".OnboardingActivity" />
         <activity android:name=".HomeActivity">

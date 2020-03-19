@@ -68,6 +68,13 @@ object Injector {
         homeActivity.rewardsManager = rewardsManager
     }
 
+    fun inject(quizActivity: QuizActivity) {
+        quizActivity.userSetup = userSetup
+        quizActivity.movementManager = movementManager
+        quizActivity.rewardsManager = rewardsManager
+        quizActivity.quizProvider = quizProvider
+    }
+
     fun inject(onboardingActivity: OnboardingActivity) {
         onboardingActivity.userSetup = userSetup
     }

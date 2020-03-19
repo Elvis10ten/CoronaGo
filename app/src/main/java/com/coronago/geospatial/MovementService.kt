@@ -13,7 +13,7 @@ import com.coronago.utils.PRIMARY_NOTIFICATION_CHANNEL_ID
 import com.coronago.utils.getNotificationManager
 
 private const val NOTIFICATION_ID = 1
-private const val KEY_ALERT_MESSAGE = "KEY_ALERT_MESSAGE"
+private const val KEY_NOTIFICATION_MESSAGE = "KEY_NOTIFICATION_MESSAGE"
 
 class MovementService: Service() {
 
@@ -36,7 +36,7 @@ class MovementService: Service() {
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        intent.getStringExtra(KEY_ALERT_MESSAGE)?.let { showMessage(it) }
+        intent.getStringExtra(KEY_NOTIFICATION_MESSAGE)?.let { showMessage(it) }
         return super.onStartCommand(intent, flags, startId)
     }
 
@@ -60,27 +60,27 @@ class MovementService: Service() {
 
     companion object {
 
-        fun alertFirstChallengePassed(context: Context) {
+        fun notifyFirstChallengePassed(context: Context) {
             Intent(context, MovementService::class.java).apply {
-                putExtra(KEY_ALERT_MESSAGE, context.getString(R.string.alertFirstChallengePassed))
+                putExtra(KEY_NOTIFICATION_MESSAGE, context.getString(R.string.alertTitleFirstChallengePassed))
                 context.startService(this)
             }
         }
 
-        fun alertFirstChallengeFailure(context: Context) {
+        fun notifyFirstChallengeFailure(context: Context) {
             Intent(context, MovementService::class.java).apply {
-                putExtra(KEY_ALERT_MESSAGE, context.getString(R.string.alertFirstChallengeFailed))
+                putExtra(KEY_NOTIFICATION_MESSAGE, context.getString(R.string.alertTitleFirstChallengeFailed))
                 context.startService(this)
             }
         }
 
-        fun clearAlerts(context: Context) {
+        fun notifyDefault(context: Context) {
             startService(context)
         }
 
         fun startService(context: Context) {
             Intent(context, MovementService::class.java).apply {
-                putExtra(KEY_ALERT_MESSAGE, context.getString(R.string.defaultNotificationText))
+                putExtra(KEY_NOTIFICATION_MESSAGE, context.getString(R.string.defaultNotificationText))
                 context.startService(this)
             }
         }

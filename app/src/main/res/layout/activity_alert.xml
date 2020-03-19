@@ -11,7 +11,7 @@
     android:paddingEnd="32dp"
     android:paddingTop="32dp"
     android:paddingBottom="16dp"
-    tools:context=".HomeActivity">
+    tools:context=".AlertActivity">
 
     <Space
         android:layout_width="0dp"
@@ -20,9 +20,10 @@
         />
 
     <ImageView
+        android:id="@+id/alertImage"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/il_onboarding"
+        tools:src="@drawable/il_success"
         android:contentDescription="@null"
         />
 
@@ -33,22 +34,25 @@
         />
 
     <TextView
+        android:id="@+id/alertTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:fontFamily="@string/fontFamilyMedium"
         android:gravity="center_horizontal"
-        android:text="@string/onboardingTitle"
+        android:alpha="?alphaEmphasisHigh"
+        tools:text="@string/onboardingTitle"
         />
 
     <TextView
+        android:id="@+id/alertSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:gravity="center_horizontal"
         android:alpha="?alphaEmphasisHigh"
-        android:text="@string/onboardingSubtitle"
+        tools:text="@string/onboardingSubtitle"
         />
 
     <Space
@@ -58,20 +62,8 @@
         />
 
     <Button
-        android:id="@+id/getStartedButton"
+        android:id="@+id/alertButton"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fatButtonHeight"
-        android:text="@string/onboardingActionGetStarted"
-        style="@style/Widget.AppCompat.Button.Colored"
-        />
-
-    <TextView
-        android:id="@+id/whySocialDistancingTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:gravity="center_horizontal"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        android:text="@string/onboardingWhySocialDistancingWorks"
         />
 </LinearLayout>

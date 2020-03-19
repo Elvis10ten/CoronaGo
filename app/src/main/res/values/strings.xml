@@ -25,6 +25,15 @@
     <string name="primaryNotificationChannelName">Primary</string>
     <string name="primaryNotificationChannelDesc">Receive alerts about challenges or points gained.</string>
     <string name="defaultNotificationText">Tracking locally…</string>
-    <string name="alertFirstChallengePassed">Congrats! You passed the first challenge. Click to complete the second challenge and gain points.</string>
-    <string name="alertFirstChallengeFailed">Dang! You moved too much. Reduce your movement to pass the first challenge.</string>
+
+    <!-- Alert screen -->
+    <string name="alertActionContinue">Continue</string>
+    <string name="alertTitleFirstChallengePassed">Congrats! You passed the first challenge 🎉🎉🎉</string>
+    <string name="alertSubtitleFirstChallengePassed">You moved only a few feet in 30 minutes. Click continue to complete the second challenge and gain points.</string>
+    <string name="alertTitleFirstChallengeFailed">Dang! You moved too much 🚶‍🤧</string>
+    <string name="alertSubtitleFirstChallengeFailed">Reduce your movement in 30 minutes to pass the first challenge.</string>
+    <string name="alertTitleSecondChallengePassed">Congrats! You passed the second challenge 🎉🎉🎉</string>
+    <string name="alertSubtitleSecondChallengePassed">You gained some points. Keep playing, we will kick Corona\'s ass together.</string>
+    <string name="alertTitleSecondChallengeFailed">Awwwww! Incorrect answer 😭😭😭</string>
+    <string name="alertSubtitleSecondChallengeFailed">Brush your knowledge about Corona and try again. The better you are informed, the less the spread.</string>
 </resources>

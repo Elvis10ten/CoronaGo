@@ -2,12 +2,12 @@ package com.coronago
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.coronago.geospatial.MovementManager
 import com.coronago.geospatial.MovementService
+import com.coronago.rewards.ChallengeStatus
 import com.coronago.rewards.RewardsManager
 import com.coronago.setup.UserSetup
 import com.coronago.utils.beGone
@@ -59,6 +59,34 @@ class HomeActivity: AppCompatActivity(), UserSetup.Callback {
     override fun onStart() {
         super.onStart()
         pointsText.text = rewardsManager.getPoints().toString()
+
+        rewardsManager.firstChallengeStatusCallback = { firstChallengeStatus ->
+            when(firstChallengeStatus) {
+                ChallengeStatus.NONE -> { /* Do nothing */ }
+                ChallengeStatus.PASSED -> {
+                    AlertActivity.start(this, Alert(
+                        R.drawable.il_success,
+                        R.string.alertTitleFirstChallengePassed,
+                        R.string.alertSubtitleFirstChallengePassed,
+                        R.raw.sound_success,
+                        R.string.alertActionContinue,
+                        QuizActivity.getIntent(this)
+                    ))
+                    finish()
+                }
+                ChallengeStatus.FAILURE -> {
+                    AlertActivity.start(this, Alert(
+                        R.drawable.il_failure,
+                        R.string.alertTitleFirstChallengeFailed,
+                        R.string.alertSubtitleFirstChallengeFailed,
+                        R.raw.sound_failure,
+                        R.string.alertActionContinue,
+                        getIntent(this)
+                    ))
+                    finish()
+                }
+            }
+        }
         rewardsManager.pointsUpdateCallback = { newPoints ->
             pointsText.text = newPoints.toString()
         }
@@ -66,6 +94,7 @@ class HomeActivity: AppCompatActivity(), UserSetup.Callback {
 
     override fun onStop() {
         super.onStop()
+        rewardsManager.firstChallengeStatusCallback = null
         rewardsManager.pointsUpdateCallback = null
     }
 
@@ -80,9 +109,7 @@ class HomeActivity: AppCompatActivity(), UserSetup.Callback {
     companion object {
 
         fun start(context: Context) {
-            Intent(context, HomeActivity::class.java).apply {
-                context.startActivity(this)
-            }
+            context.startActivity(QuizActivity.getIntent(context))
         }
 
         fun getIntent(context: Context): Intent {
