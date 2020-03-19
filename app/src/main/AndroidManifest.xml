@@ -38,7 +38,7 @@
         </activity>
 
         <service
-            android:name=".geospatial.NavigationService"
+            android:name=".geospatial.MovementService"
             android:foregroundServiceType="location"
             />
     </application>

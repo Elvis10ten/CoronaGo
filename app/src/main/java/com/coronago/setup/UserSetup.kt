@@ -1,6 +1,7 @@
 package com.coronago.setup
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.coronago.geospatial.LocationSettingsChecker
 import com.coronago.utils.hasLocationPermission
 import com.google.android.gms.common.api.ResolvableApiException
@@ -9,10 +10,9 @@ private const val KEY_TIME_ONBOARDED = "KEY_TIME_ONBOARDED"
 
 class UserSetup(
     private val appContext: Context,
+    private val sp: SharedPreferences,
     private val locationSettingsChecker: LocationSettingsChecker
 ) {
-
-    private val sp = appContext.getSharedPreferences("USER_STORE", Context.MODE_PRIVATE)
 
     fun checkSetup(callback: Callback) {
         if(!sp.contains(KEY_TIME_ONBOARDED)) {
