@@ -1,4 +1,5 @@
 <resources>
+    <!-- Thanks to Undraw for all the free illustrations. https://undraw.co/illustrations -->
     <string name="appName">CoronaGo</string>
 
     <!-- Onboarding screen -->

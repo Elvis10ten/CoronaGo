@@ -9,3 +9,5 @@ Full privacy. Locations are processed locally.
 ![Onboarding](sc_onboarding.png)
 ### Enable location permission
 ![Location](sc_location.png)
+
+Thanks to Undraw for all the free illustrations. https://undraw.co/illustrations

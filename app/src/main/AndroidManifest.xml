@@ -2,6 +2,7 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.coronago">
+    <!-- Thanks to Undraw for all the free illustrations. https://undraw.co/illustrations -->
 
     <!-- Normal permissions -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
